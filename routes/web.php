@@ -16,3 +16,35 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/detail', function () {
+    $users = [
+        [
+        "id" => 1,
+        "nama" => "ronald Alberty",
+        "age" => 20,
+        ],
+        [
+        "id" => 2,
+        "nama" => "kevin Leonardo",
+        "age" => 24,
+        ],
+        [
+        "id" => 3,
+        "nama" => "Stevano Michael",
+        "age" => 20,
+        ]
+    ];
+    $id = request() -> get("id");
+    return $id;
+});
+
+Route::name("admin.")->group(function() {
+    
+    Route::get("/admin/detail", function() {
+        return [
+            "id" => 1,
+            "username" => "admin"
+        ];
+    })->name("detail");
+});
